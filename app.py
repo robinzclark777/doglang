@@ -9,9 +9,9 @@ from collections import Counter
 app = Flask(__name__)
 model = whisper.load_model("base")
 
-CUES = {"sit", "down", "wait", "come", "here", "place", "circle", "spin", "stand"}
-REWARD_MARKERS = {"yes", "good", "get it", "strike", "tug"}
-NO_REWARD_MARKERS = {"no", "nope", "uh", "uh uh", "wrong", "try again"}
+CUES = {"sit", "down", "stay", "come", "heel", "place", "off"}
+REWARD_MARKERS = {"yes", "good", "free", "okay"}
+NO_REWARD_MARKERS = {"nope", "uh", "uh uh", "wrong", "try again"}
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -23,7 +23,7 @@ def index():
         if not file:
             return redirect(url_for("index"))
 
-        filename = f"{uuid.uuid4()}.m4a"
+        filename = f"{uuid.uuid4()}.webm"
         filepath = os.path.join(UPLOAD_FOLDER, filename)
         file.save(filepath)
 
