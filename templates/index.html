@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Dog Training Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function showSpinner() {
+            document.getElementById("spinner").style.display = "block";
+        }
+    </script>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 1rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input,
+        button {
+            font-size: 1rem;
+            padding: 0.75rem;
+        }
+
+        #spinner {
+            display: none;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #444;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Upload Dog Training Audio</h1>
+    <form method="post" enctype="multipart/form-data" onsubmit="showSpinner()">
+        <input type="file" name="audio" accept="audio/*" required>
+        <button type="submit">Upload and Analyze</button>
+    </form>
+    <div id="spinner">Analyzing... Please wait.</div>
+</body>
+
+</html>

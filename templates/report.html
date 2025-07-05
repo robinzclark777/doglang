@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Training Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 1rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 0.5rem 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
+            color: #0066cc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Training Report Card</h1>
+    <p><strong>Transcript:</strong></p>
+    <pre>{{ text }}</pre>
+
+    <p><strong>Report:</strong></p>
+    <ul>
+        <li>Commands: {{ report['commands'] }}</li>
+        <li>Reward Markers: {{ report['reward_markers'] }}</li>
+        <li>No-Reward Markers: {{ report['no_reward_markers'] }}</li>
+        <li>Unrecognized Words: {{ report['unknown'] }}</li>
+    </ul>
+
+    <a href="/">Analyze Another</a>
+</body>
+
+</html>
