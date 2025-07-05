@@ -10,8 +10,8 @@ app = Flask(__name__)
 model = whisper.load_model("base")
 
 CUES = {"sit", "down", "wait", "come", "here", "place", "circle", "spin", "stand"}
-REWARD_MARKERS = {"yes", "good"}
-NO_REWARD_MARKERS = {"nope", "uh", "uh uh", "wrong", "try again"}
+REWARD_MARKERS = {"yes", "good", "get it", "strike", "tug"}
+NO_REWARD_MARKERS = {"no", "nope", "uh", "uh uh", "wrong", "try again"}
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -50,4 +50,5 @@ def analyze_transcript(text):
     return report
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
