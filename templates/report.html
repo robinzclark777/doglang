@@ -17,11 +17,27 @@
             text-align: center;
         }
 
-        pre {
-            background: #f4f4f4;
-            padding: 1rem;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+        .word {
+            display: inline-block;
+            margin: 0.2rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.3rem;
+        }
+
+        .cue {
+            background: #cce5ff;
+        }
+
+        .reward {
+            background: #d4edda;
+        }
+
+        .no_reward {
+            background: #fff3cd;
+        }
+
+        .unknown {
+            background: #f8d7da;
         }
 
         ul {
@@ -44,9 +60,19 @@
 
 <body>
     <h1>CueCheck – Training Report</h1>
-    <p><strong>Transcript:</strong></p>
-    <pre>{{ text }}</pre>
 
+    {% if words_with_tags %}
+    <p><strong>Transcript:</strong></p>
+    <div>
+        {% for word, tag in words_with_tags %}
+        <span class="word {{ tag }}">{{ word }}</span>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p><em>No transcript data available.</em></p>
+    {% endif %}
+
+    {% if report %}
     <p><strong>Report:</strong></p>
     <ul>
         <li>Commands: {{ report['commands'] }}</li>
@@ -54,8 +80,10 @@
         <li>No-Reward Markers: {{ report['no_reward_markers'] }}</li>
         <li>Unrecognized Words: {{ report['unknown'] }}</li>
     </ul>
+    {% endif %}
 
-    <a href="/">Analyze Another</a>
+    <a href="/">🔁 Analyze Another</a>
 </body>
+
 
 </html>
